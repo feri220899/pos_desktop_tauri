@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@import "@vueform/multiselect/themes/default.css";
+@plugin "daisyui" {
+    themes: corporate --default, night;
+}
+
+/* Fix: cegah variable --page-scroll-bg dari root mengoverride background sidebar [data-theme] scoped */
+[data-theme]:not(:root) {
+    --page-scroll-bg: initial;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(128,128,128,0.3) transparent;
+}
+::-webkit-scrollbar              { width: 3px; height: 3px; }
+::-webkit-scrollbar-track        { background: transparent; }
+::-webkit-scrollbar-thumb        { background: rgba(128,128,128,0.3); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover  { background: rgba(128,128,128,0.5); }
+
+/* ── @vueform/multiselect — DaisyUI overrides ───────────── */
+.multiselect {
+    @apply min-h-10 border border-base-300 bg-base-100 text-base-content rounded-lg text-sm font-normal;
+}
+.multiselect.is-active {
+    @apply border-primary;
+    box-shadow: none !important;
+}
+.multiselect-single-label { @apply text-sm text-base-content; }
+.multiselect-placeholder   { @apply text-sm text-base-content/40; }
+.multiselect-search        { @apply text-sm bg-transparent text-base-content; }
+.multiselect-dropdown      { @apply border-base-300 bg-base-100 shadow-lg; }
+.multiselect-option {
+    @apply text-sm py-2 px-3 text-base-content;
+    min-height: unset;
+}
+.multiselect-option.is-pointed               { @apply bg-base-200 text-base-content; }
+.multiselect-option.is-selected              { @apply bg-primary/10 text-primary; }
+.multiselect-option.is-selected.is-pointed   { @apply bg-primary/20 text-primary; }
+.multiselect-no-options,
+.multiselect-no-results                      { @apply text-sm text-base-content/50 py-2 px-3; }
+.multiselect-clear-icon                      { @apply bg-base-content/40; }
+.multiselect-caret                           { @apply bg-base-content/40; }
